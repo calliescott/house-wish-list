@@ -1,6 +1,6 @@
 const jwt = require('jsonwebtoken');
 
-const SECRET = "mumble jumble";
+const SECRET = "mumble jumble secret ticket";
 
 const issueToken = (user) => {
   const {_id: id } = user;
@@ -9,7 +9,7 @@ const issueToken = (user) => {
     user: { id }
   };
 
-  const token = jwt.sign(yload, SECRET);
+  const token = jwt.sign(payload, SECRET);
   return token;
 };
 
