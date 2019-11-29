@@ -1,5 +1,7 @@
-'use strict'
-
-exports.URL = process.env.MONGODB_URI || 'mongodb://localhost:27017/projectstarter'
-exports.PORT = process.env.PORT || 4000
-exports.SECRET = process.env.SECRET || 'super-secret-passphrase'
+exports.MONGODB_URL = 'mongodb://localhost:27017'
+exports.MONGODB_DBNAME = 'houselist'
+exports.MONGODB_CONFIG = {
+  useNewUrlParser: true,
+  useUnifiedTopology: true
+}
+exports.API_PORT = 4000

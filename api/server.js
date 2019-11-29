@@ -1,39 +1,30 @@
-'use strict'
+const express = require('express');
+const mongoose = require('mongoose');
 
-const mongoose = require('mongoose')
-const express = require('express')
+const app = express();
 
-// 1. Create main express intance
-const app = express()
+const { 
+  API_PORT,
+  MONGODB_CONFIG,
+  MONGODB_URL,
+  MONGODB_DBNAME
+} = require('./utils/constants');
 
-// 2. Require routes
-const { router: bookRoutes } = require('./routes/books/bookRoutes')
+const { router: houseRouter } = require('./routes/houseRouter');
 
-// 3. Require conatants
-const { URL, PORT } = require('./utils/constants')
+//these two use are middleware
+app.use(express.json());
+app.use('/houses', houseRouter);
 
-// 4. Ensure that the router is parsing the request body to appropriately format incoming requests
-app.use(express.json())
-app.use(express.urlencoded({ extended: true }))
-
-// 5. Utilise routes
-app.use('/api/books', bookRoutes)
-
-// 6. Define configuration for mongodb
-const MONGO_CONFIG = {
-  useNewUrlParser: true,
-  useUnifiedTopology: true
-}
-
-// 7. Start server
-mongoose
-  .connect(URL, MONGO_CONFIG)
-  .then(async () => {
-    console.log(`Connected to database at ${URL}`)
-    app.listen(PORT, () => {
-      console.log(`Server is running on PORT: ${PORT}`)
+//connect to database & handle err
+mongoose.connect(`${MONGODB_URL}/${MONGODB_DBNAME}`, MONGODB_CONFIG)
+  .then( async() => {
+    console.log('Connected to database...');
+    app.listen(API_PORT, () => {
+      console.log(`Server running on port: ${API_PORT}`);
     })
   })
   .catch((err) => {
-    console.error(err)
+    console.log('Failed to connect to database...')
+    throw err
   })
