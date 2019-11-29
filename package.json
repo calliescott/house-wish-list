@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "react-scripts test",
-    "start:server": "nodemon api/server.js --ignore src/ --ignore build/ --ignore public/",
+    "start:server": "nodemon api/server.js --ignore src",
     "start:client": "react-scripts start",
     "build:client": "react-scripts build",
     "git": "node scripts/git.js calliescott house-wish-list"
@@ -31,7 +31,8 @@
     "react": "^16.11.0",
     "react-dom": "^16.11.0",
     "react-router-dom": "^5.1.2",
-    "react-scripts": "^3.2.0"
+    "react-scripts": "^3.2.0",
+    "uuid": "^3.3.3"
   },
   "browserslist": [
     ">0.2%",
