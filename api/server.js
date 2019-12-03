@@ -13,15 +13,25 @@ const {
 
 const { router: houseRouter } = require('./routes/houseRouter');
 
+//serve static files first
 const publicPath = path.resolve(__dirname, "..", "build");
 app.use("/", express.static(publicPath));
 
 //these two use are middleware
 app.use(express.json());
+//then serve custom routes
 app.use('/houses', houseRouter);
+// app.use('/api/houses', houseRouter);
+
+//then attach everything else to the index.html
+//needs to stay at the very bottom because it matches everything
+//so you would never get to the other routes. 
+app.use("/*", (req, res) => {
+  res.sendFile(path.join(__dirname, "public", "index.html"));
+});
 
 //connect to database & handle err
-mongoose.connect(`${URL}`, MONGODB_CONFIG)
+mongoose.connect(URL, MONGODB_CONFIG)
   .then( async() => {
     console.log('Connected to database...');
     app.listen(PORT, () => {
