@@ -5,9 +5,9 @@ const path = require("path");
 const app = express();
 
 const { 
-  API_PORT,
+  PORT,
   MONGODB_CONFIG,
-  MONGODB_URI,
+  URL,
   MONGODB_DBNAME
 } = require('./utils/constants');
 
@@ -21,11 +21,11 @@ app.use(express.json());
 app.use('/houses', houseRouter);
 
 //connect to database & handle err
-mongoose.connect(`${MONGODB_URI}/${MONGODB_DBNAME}`, MONGODB_CONFIG)
+mongoose.connect(`${URL}`, MONGODB_CONFIG)
   .then( async() => {
     console.log('Connected to database...');
-    app.listen(API_PORT, () => {
-      console.log(`Server running on port: ${API_PORT}`);
+    app.listen(PORT, () => {
+      console.log(`Server running on port: ${PORT}`);
     })
   })
   .catch((err) => {
