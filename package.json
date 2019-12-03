@@ -23,7 +23,7 @@
   "bugs": {
     "url": "https://github.com/HackerYou/con-ed-full-stack/issues"
   },
-  "homepage": "https://github.com/HackerYou/con-ed-full-stack#readme",
+  "homepage": "https://calliescott-fullstack-project.herokuapp.com/",
   "dependencies": {
     "eslint": "^6.6.0",
     "express": "^4.17.1",
