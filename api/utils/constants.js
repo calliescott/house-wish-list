@@ -1,4 +1,4 @@
-exports.MONGODB_URL = 'mongodb://localhost:27017'
+exports.MONGODB_URI = 'mongodb://localhost:27017'
 exports.MONGODB_DBNAME = 'houselist'
 exports.MONGODB_CONFIG = {
   useNewUrlParser: true,
