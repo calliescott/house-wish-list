@@ -1,18 +1,39 @@
 import React, { Component } from 'react';
-import HouseList from "../HouseList/HouseList";
-import './App.css';
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+
+import Header from "../Header/Header";
+import HomePage from "../HomePage/HomePage";
 
 class App extends Component {
+  constructor() {
+    super();
+
+    this.state = {
+      houses: [],
+      newHouse: ''
+    }
+  }
+
+  async componentDidMount() {
+    const result = await fetch('/houses');
+    const data = await result.json();
+
+    const prevState = this.state;
+    const newState = { houses: data.results };
+    const nextState = Object.assign({}, prevState, newState);
+    this.setState(nextState);
+  }
+
   render () {
     return (
-      <div className='App'>
-        <header className='App-header'>
-          
-        </header>
-        <section>
-          <HouseList />
-        </section>
-      </div>
+      <Router>
+        <div className='App'>
+          <Header />
+          <Switch>
+            <Route exact path="/" component={HomePage} />
+          </Switch>
+        </div>
+      </Router>
     );
   }
 }

@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Button from "../Button/Button";
 
 class HouseListItem extends Component {
   render() {
@@ -11,6 +12,7 @@ class HouseListItem extends Component {
           <p>Price: ${this.props.price}</p>
         </div>
         <p>More details</p>
+        <Button text="Delete from list" />
       </li>
     );
   };
