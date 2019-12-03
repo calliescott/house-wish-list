@@ -27,8 +27,10 @@ app.use('/houses', houseRouter);
 //needs to stay at the very bottom because it matches everything
 //so you would never get to the other routes. 
 app.use("/*", (req, res) => {
-  res.sendFile(path.join(__dirname, "public", "index.html"));
+  res.sendFile(path.join(publicPath, "index.html"));
 });
+
+//probably insert some err handle middleware in this spot
 
 //connect to database & handle err
 mongoose.connect(URL, MONGODB_CONFIG)
