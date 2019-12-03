@@ -1,5 +1,6 @@
 const express = require('express');
 const mongoose = require('mongoose');
+const path = require("path");
 
 const app = express();
 
@@ -11,6 +12,9 @@ const {
 } = require('./utils/constants');
 
 const { router: houseRouter } = require('./routes/houseRouter');
+
+const publicPath = path.resolve(__dirname, "..", "build");
+app.use("/", express.static(publicPath));
 
 //these two use are middleware
 app.use(express.json());
