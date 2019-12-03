@@ -35,4 +35,16 @@ exports.createHouse = async ( data = {} ) => {
   }
 }
 
-exports.deleteHouse = async (houseId) => {};
+exports.deleteHouse = async (houseId) => {
+  try {
+    const houseToDelete = await exports.getHouse(houseId);
+    if (houseToDelete) {
+      const houses = await House.find({});
+      const result = houses.deleteOne({ _id: houseId });
+      return result;
+    };
+  } catch (err) {
+    console.error(err);
+    throw err;
+  }
+};
