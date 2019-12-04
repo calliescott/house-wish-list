@@ -1,1 +1,0 @@
-{"version":3,"sources":["Button.css"],"names":[],"mappings":"AAAA,QACE,iBAAkB,CAClB,qBAAsB,CACtB,UAAW,CACX,cACF","file":"3.7be8bc60.chunk.css","sourcesContent":[".button {\n  text-align: center;\n  background-color: navy;\n  color:white;\n  font-size: 15px;\n}"]}
