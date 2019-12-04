@@ -9,12 +9,11 @@ houseRouter.route('/')
     const houses = await houseService.listHouses();
     res.json({
       results: houses
-    })
+    });
   })
   .post(async (req, res) => {
     const { body } = req;
     const house = await houseService.createHouse(body);
-
     res.json(house);
   });
    
