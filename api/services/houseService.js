@@ -1,4 +1,4 @@
-
+const uuid = require('uuid/v4');
 const { model: House } = require('../models/houseModel');
 
 exports.listHouses = async () => {
@@ -11,7 +11,7 @@ exports.listHouses = async () => {
     console.error(err);
     throw err;
   }
-}
+};
 
 exports.getHouse = async (houseId) => {
   try {

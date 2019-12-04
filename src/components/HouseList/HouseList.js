@@ -7,30 +7,13 @@ import './HouseList.css';
 import HouseListItem from "../HouseListItem/HouseListItem";
 
 class HouseList extends Component {
-  constructor() {
-    super();
-    this.state = {
-      houses: [{
-        title: "House 1",
-        rating: 4,
-        city: "Toronto",
-        price: 999000
-      }, {
-        title: "House 2",
-        rating: 8,
-        city: "Toronto",
-        price: 999000
-      }]
-    }
-  }
 
   render() {
     return (
       <ul>
-        {this.state.houses ? this.state.houses.map((house) => {
-          const { rating, title, city, price } = house;
+        {this.props.houses ? this.props.houses.map((house, i) => {
           return (
-            <HouseListItem rating={rating} title={title}city={city} price={price}/>
+            <HouseListItem key={i} rating={house.rating} title={house.title} city={house.address.city} price={house.listingPrice}/>
           )
         }) : (
           <div>
