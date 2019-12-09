@@ -1,25 +1,25 @@
 import React, { Component } from "react";
 
 import Button from "../Button/Button";
-import "../HouseListItem/HouseListItem";
-
-import './HouseList.css';
 import HouseListItem from "../HouseListItem/HouseListItem";
 
-class HouseList extends Component {
+import './HouseList.css';
 
+class HouseList extends Component {
+  
   render() {
+    const { history, houses } = this.props;
     return (
       <ul>
-        {this.props.houses ? this.props.houses.map((house, i) => {
+        {houses ? houses.map((house, i) => {
           return (
-            <HouseListItem key={i} rating={house.rating} title={house.title} city={house.address.city} price={house.listingPrice}/>
+            <HouseListItem key={i} rating={house.rating} title={house.title} city={house.city} price={house.listingPrice} history={history} id={house._id}/>
           )
         }) : (
-          <div>
+          <li>
             <p>There are currently no houses on your list</p>
-            <Button text="Add House" />
-          </div>
+            <Button text="Add House" onClick={() => { history.push("/addHouse"); }} />
+          </li>
         )} 
       </ul>
     );

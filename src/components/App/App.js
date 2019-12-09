@@ -3,6 +3,9 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 import Header from "../Header/Header";
 import HomePage from "../HomePage/HomePage";
+import AddHouseForm from "../AddHouseForm/AddHouseForm";
+import HousePage from "../HousePage/HousePage";
+import Footer from "../Footer/Footer";
 
 class App extends Component {
   constructor() {
@@ -15,7 +18,7 @@ class App extends Component {
   }
 
   async componentDidMount() {
-    const result = await fetch('/houses');
+    const result = await fetch('/api/houses');
     const data = await result.json();
 
     const prevState = this.state;
@@ -31,7 +34,13 @@ class App extends Component {
           <Header />
           <Switch>
             <Route exact path="/" component={HomePage} />
+            <Route exact path="/addHouse" component={AddHouseForm} />
+            <Route path="/house/:id" component={HousePage} />
+            <Route path="*" component={() => {
+              return <div>Opps.. looks like you're lost</div>
+            }} />
           </Switch>
+          <Footer />
         </div>
       </Router>
     );

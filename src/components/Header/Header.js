@@ -5,10 +5,11 @@ import("./Header.css");
 class Header extends Component {
   render() {
     return(
-      <div>
-        <nav>
-          <ul>
-            <li><Link to="/">My List</Link></li>
+      <div className="headerContainer">
+        <nav className="navContainer">
+          <ul className="nav-ul">
+            <li className="nav-li"><Link to="/">My List</Link></li>
+            <li className="nav-li"><Link to="/addHouse">Add House</Link></li>
           </ul>
         </nav>
       </div>

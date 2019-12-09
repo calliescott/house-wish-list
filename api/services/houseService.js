@@ -1,4 +1,3 @@
-const uuid = require('uuid/v4');
 const { model: House } = require('../models/houseModel');
 
 exports.listHouses = async () => {
@@ -9,42 +8,42 @@ exports.listHouses = async () => {
     })
   } catch (err) {
     console.error(err);
-    throw err;
+    throw new Error(err.message);
   }
 };
 
-exports.getHouse = async (houseId) => {
+exports.getHouseById = async (id) => {
   try {
-    const house = await House.findById(houseId);
+    const house = await House.findById(id);
     return house;
   } catch (err) {
     console.error(err);
-    throw err;
+    throw new Error(err.message);
   }
 };
 
-exports.createHouse = async ( data = {} ) => {
+exports.createHouse = async ( houseData ) => {
   //the below line will explode if something doesn't match the schema
   try {
-    const house = new House(data);
-    const doc = await house.save();
-    return doc;
+    const house = new House(houseData);
+    const newHouse = await house.save();
+    return newHouse;
   } catch (err) {
     console.error(err);
-    throw err;
+    throw new Error(err.message);
   }
 }
 
-exports.deleteHouse = async (houseId) => {
+exports.deleteHouse = async (id) => {
   try {
-    const houseToDelete = await exports.getHouse(houseId);
+    const houseToDelete = await exports.getHouse(id);
     if (houseToDelete) {
       const houses = await House.find({});
-      const result = houses.deleteOne({ _id: houseId });
+      const result = houses.deleteOne({ _id: id });
       return result;
     };
   } catch (err) {
     console.error(err);
-    throw err;
+    throw new Error(err.message);
   }
 };

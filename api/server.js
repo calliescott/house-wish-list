@@ -20,8 +20,8 @@ app.use("/", express.static(publicPath));
 //these two use are middleware
 app.use(express.json());
 //then serve custom routes
-app.use('/houses', houseRouter);
-// app.use('/api/houses', houseRouter);
+// app.use('/houses', houseRouter);
+app.use('/api/houses', houseRouter);
 
 //then attach everything else to the index.html
 //needs to stay at the very bottom because it matches everything

@@ -4,30 +4,50 @@ const houseRouter = express.Router();
 
 const houseService = require('../services/houseService');
 
-houseRouter.route('/')
-  .get(async (req, res) => {
+houseRouter.get('/', async (req, res, next) => {
+  try {
     const houses = await houseService.listHouses();
-    res.json({
-      results: houses
+    res.status(200).json({
+      data: houses
     });
-  })
-  .post(async (req, res) => {
-    const { body } = req;
-    const house = await houseService.createHouse(body);
-    res.json(house);
+  } catch (err) {
+    console.log(err);
+    res.status(500).json({ "error": "Internal server error" });
+  }
+});
+
+houseRouter.post('/', async (req, res, next) => {
+    const { 
+      listingPrice,
+      address,
+      city,
+      postalCode,
+      agentValue,
+      rating
+    } = req.body;
+    try {
+      const house = await houseService.createHouse({
+        listingPrice,
+        address,
+        city,
+        postalCode,
+        agentValue,
+        rating
+      });
+      res.status(200).json({ data: house })
+    } catch(err) {
+      console.log(err);
+      res.status(500).json({ "error": "Internal server error" });
+    }
   });
    
-houseRouter.route('/:houseId')
-  .get( async (req, res) => {
-    const { params } = req;
-    const { houseId } = params;
-
-    const house = await houseService.getHouse(houseId);
-    
-    if (house) {
-    res.json(house);
-  } else {
-    res.status(404).send();
+houseRouter.get('/:id', async (req, res, next) => {
+  try {
+    const house = await houseService.getHouseById(req.params.id);
+    res.status(200).json({ data: house });
+  } catch(err) {
+    console.log(err);
+    res.status(500).json({ "error": "Internal server error" });
   }
 });
 

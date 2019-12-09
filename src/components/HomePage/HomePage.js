@@ -1,36 +1,32 @@
 import React, { Component } from "react";
-
-import AddHouseForm from "../AddHouseForm/AddHouseForm";
 import HouseList from "../HouseList/HouseList";
 
 import("./HomePage.css");
 
 class HomePage extends Component {
   constructor() {
-    super()
+    super();
 
     this.state = {
-      houses: [],
-      newHouse: ''
+      houses: []
     }
   }
 
   async componentDidMount() {
-    const result = await fetch('/houses');
-    const data = await result.json();
+    const response = await fetch('/api/houses');
+    const resp = await response.json();
 
-    const prevState = this.state;
-    const newState = { houses: data.results };
-    const nextState = Object.assign({}, prevState, newState);
-    this.setState(nextState);
+    this.setState({
+      houses: resp.data
+    });
   }
+
   render() {
     return(
-      <>
+      <div className="homePageContainer">
         <h1>Home Page</h1>
-        <HouseList houses={this.state.houses} />
-        <AddHouseForm />
-      </>
+        <HouseList houses={this.state.houses} history={this.props.history} />
+      </div>
     )
   }
 }

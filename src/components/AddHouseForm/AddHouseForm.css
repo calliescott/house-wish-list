@@ -1,3 +1,7 @@
+.addHouseContainer {
+  padding-top: 100px;
+}
+
 .border {
   border-radius: 8px;
   display: flex;
