@@ -23,7 +23,19 @@ export default function HousePage(props) {
     getHouseListingById();
 
   }, [ props.match.params.id]);
-  console.log(house);
+
+  async function deleteHouse() {
+    try {
+      const response = await fetch('/api/houses', {
+        method: 'DELETE'
+      });
+      const resp = await response.json();
+      console.log("Resp", resp);
+    } catch(err) {
+      console.log(err);
+    } 
+  };
+
   return (
     <div className="housePageContainer">
     <div className="houseContainer">
@@ -35,7 +47,10 @@ export default function HousePage(props) {
       <p>Pros: {house.positiveNotes}</p>
       <p>Cons: {house.positiveNotes}</p>
       <div className="buttonContainer">
-        <Button text={"Delete from list"} />
+        <Button text={"Delete from list"} onClick={() => {
+          deleteHouse();
+          props.history.push("/");
+        }}/>
         <Button text={"Back to List"} onClick={() => {
           props.history.push("/");
         }}/>

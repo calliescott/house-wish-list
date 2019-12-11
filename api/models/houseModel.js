@@ -9,10 +9,6 @@ const houseSchema = exports.schema = new Schema({
   rating: Number,
   positiveNotes: String,
   negativeNotes: String,
-  user: {
-    type: Schema.Types.ObjectId,
-    ref: 'User',
-  }
 });
 
 const House = exports.model = mongoose.model('House', houseSchema);

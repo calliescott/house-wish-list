@@ -64,6 +64,7 @@ houseRouter.post('/', async (req, res, next) => {
         negativeNotes
       });
       res.status(200).json({ data: house })
+      console.log(house);
     } catch(err) {
       console.log(err);
       res.status(500).json({ "error": "Internal server error" });
@@ -75,6 +76,16 @@ houseRouter.get('/:id', async (req, res, next) => {
     const house = await houseService.getHouseById(req.params.id);
     res.status(200).json({ data: house });
   } catch(err) {
+    console.log(err);
+    res.status(500).json({ "error": "Internal server error" });
+  }
+});
+
+houseRouter.delete('/', async (req, res, next) => {
+  try {
+    const house = await houseService.deleteHouse(req.params.id);
+    res.status(200).json({ data: req.params.id });
+  } catch (err) {
     console.log(err);
     res.status(500).json({ "error": "Internal server error" });
   }
