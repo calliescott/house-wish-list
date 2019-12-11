@@ -55,11 +55,16 @@ export default function AddHouseForm(props) {
         <input className="formInput" id="agent" type="text" required="required" value={positiveNotes} onChange={(e) => {updatePositiveNotes(e.target.value);}}/>
         <label className="formLabel" htmlFor="agent">Cons:</label>
         <input className="formInput" id="agent" type="text" required="required" value={negativeNotes} onChange={(e) => {updateNegativeNotes(e.target.value);}}/>
-        <Button text="Submit" onClick={() => {
-          createHouse();
-          props.history.push("/");
-          
-        }} />
+        <div className="form-buttons">
+          <Button text="Submit" onClick={() => {
+            createHouse();
+            props.history.push("/");
+          }} />
+          <Button text="Cancel" onClick={() => {
+            props.history.push("/");
+          }} />
+        </div>
+        
       </div>
     </div>
   )

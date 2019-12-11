@@ -34,3 +34,17 @@
   margin-bottom: 10px;
   height: 30px;
 }
+
+.form-buttons {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+   
+  .button {
+    width: calc(50% - 10px);
+  }
+
+  .button:first-child {
+    margin-right: 20px;
+  }
+}

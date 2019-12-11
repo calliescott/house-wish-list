@@ -11,7 +11,7 @@ class HouseList extends Component {
     const { history, houses } = this.props;
     return (
       <ul className="house-list-ul">
-        {houses.length > 1 ? houses.map((house, i) => {
+        {houses.length > 0 ? houses.map((house, i) => {
           return (
             <HouseListItem key={i} rating={house.rating} address={house.address} city={house.city} price={house.listingPrice} history={history} id={house._id}/>
           )
