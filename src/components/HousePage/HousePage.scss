@@ -20,11 +20,25 @@
   .houseContainer {
     padding-left: 50px;
     padding-right: 50px;
+    position: relative;
+
+    .buttonContainer {
+      display: flex;
+      justify-content: space-between;
+      width: calc(100% - 100px);
+      position: absolute;
+      bottom: 100px;
+
+      button:first-child {
+        &:hover {
+          background-color: red;
+          border: 1px solid black;
+          color: black;
+        }
+      }
+    }
   }
 }
 
-.buttonContainer {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
+
+

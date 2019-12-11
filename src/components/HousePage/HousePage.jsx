@@ -39,13 +39,13 @@ export default function HousePage(props) {
   return (
     <div className="housePageContainer">
     <div className="houseContainer">
-      <h1>Location: {house.address}</h1>
-      <p>Price: {house.listingPrice}</p>
-      <p>Rating: {house.rating}</p>
-      <p>{`Agent Value: ${house.agentValue}`}</p>
-      <p>city: {house.city}</p>
-      <p>Pros: {house.positiveNotes}</p>
-      <p>Cons: {house.positiveNotes}</p>
+      <h1>{`Location: ${house.address}`}</h1>
+      <p>{`Price: $${house.listingPrice}`}</p>
+      <p>{`Rating: ${house.rating}`}</p>
+      <p>{`Agent Value: $${house.agentValue}`}</p>
+      <p>{`city: ${house.city}`}</p>
+      <p>{`Pros: ${house.positiveNotes}`}</p>
+      <p>{`Cons: ${house.positiveNotes}`}</p>
       <div className="buttonContainer">
         <Button text={"Delete from list"} onClick={() => {
           deleteHouse();
