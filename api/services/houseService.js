@@ -36,9 +36,8 @@ exports.createHouse = async ( houseData ) => {
 
 exports.deleteHouse = async (id) => {
   try {
-    const houseToDelete = await exports.getHouse(id);
+    const houseToDelete = await House.findById(id);
     if (houseToDelete) {
-      const houses = await House.find({});
       const result = houses.deleteOne({ _id: id });
       return result;
     };

@@ -21,8 +21,8 @@ houseRouter.post('/', async (req, res, next) => {
       listingPrice,
       address,
       city,
-      agentValue: agentPrice,
-      rating: houseRating,
+      agentValue,
+      rating,
       positiveNotes,
       negativeNotes
     } = req.body;
@@ -37,22 +37,6 @@ houseRouter.post('/', async (req, res, next) => {
       return
     }
   
-    const rating = Number(houseRating)
-    if (!rating || rating > 10 || rating < 1) {
-      res.status(400).json({ error: 'rating must be between 1 and 10' })
-      return
-    }
-
-    if (!listingPrice || listingPrice === 0) {
-      res.status(400).json({ error: 'price must be provided' })
-      return
-    }
-
-    if (!agentValue || listingPrice === 0) {
-      res.status(400).json({ error: 'rating must be provided' })
-      return
-    }
-
     try {
       const house = await houseService.createHouse({
         listingPrice,
@@ -81,7 +65,7 @@ houseRouter.get('/:id', async (req, res, next) => {
   }
 });
 
-houseRouter.delete('/', async (req, res, next) => {
+houseRouter.delete('/delete/:id', async (req, res, next) => {
   try {
     const house = await houseService.deleteHouse(req.params.id);
     res.status(200).json({ data: req.params.id });

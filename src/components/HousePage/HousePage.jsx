@@ -26,7 +26,7 @@ export default function HousePage(props) {
 
   async function deleteHouse() {
     try {
-      const response = await fetch('/api/houses', {
+      const response = await fetch('/api/houses/delete/:id', {
         method: 'DELETE'
       });
       const resp = await response.json();
