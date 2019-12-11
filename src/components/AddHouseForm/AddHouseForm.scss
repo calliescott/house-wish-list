@@ -46,5 +46,12 @@
 
   .button:first-child {
     margin-right: 20px;
+    border: 1px solid gray;
+    color: grey;
+    background-color: white;
+
+    &:hover {
+      background-color: lightgrey;
+    }
   }
 }

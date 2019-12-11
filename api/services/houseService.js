@@ -38,8 +38,8 @@ exports.deleteHouse = async (id) => {
   try {
     const houseToDelete = await House.findById(id);
     if (houseToDelete) {
-      const result = houses.deleteOne({ _id: id });
-      return result;
+      const result = House.deleteOne({ _id: id });
+    return result;
     };
   } catch (err) {
     console.error(err);
