@@ -1,0 +1,20 @@
+.button {
+  text-align: center;
+  background-color: grey;
+  color:white;
+  font-size: 25px;
+  border-radius: 4px;
+  padding: 10px;
+
+  &:hover {
+    border: grey;
+    color: grey;
+    background-color: white;
+  }
+}
+
+.button:hover {
+  border: 1px solid grey;
+  color: grey;
+  background-color: white;
+}

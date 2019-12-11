@@ -21,18 +21,47 @@ houseRouter.post('/', async (req, res, next) => {
       listingPrice,
       address,
       city,
-      postalCode,
-      agentValue,
-      rating
+      agentValue: agentPrice,
+      rating: houseRating,
+      positiveNotes,
+      negativeNotes
     } = req.body;
+
+    if (!address || address === '') {
+      res.status(400).json({ error: 'address name must be provided' })
+      return
+    }
+
+    if (!city || city === '') {
+      res.status(400).json({ error: 'city name must be provided' })
+      return
+    }
+  
+    const rating = Number(houseRating)
+    if (!rating || rating > 10 || rating < 1) {
+      res.status(400).json({ error: 'rating must be between 1 and 10' })
+      return
+    }
+
+    if (!listingPrice || listingPrice === 0) {
+      res.status(400).json({ error: 'price must be provided' })
+      return
+    }
+
+    if (!agentValue || listingPrice === 0) {
+      res.status(400).json({ error: 'rating must be provided' })
+      return
+    }
+
     try {
       const house = await houseService.createHouse({
         listingPrice,
         address,
         city,
-        postalCode,
         agentValue,
-        rating
+        rating,
+        positiveNotes,
+        negativeNotes
       });
       res.status(200).json({ data: house })
     } catch(err) {

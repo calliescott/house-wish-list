@@ -1,0 +1,30 @@
+.housePageContainer {
+  padding-top: 100px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: flex-start;
+  height: calc(100vh - 100px);
+
+  .houseContainer, .imageContainer {
+    width: 50%;
+  }
+
+  .imageContainer {
+    background-image: url("../../assets/patrick-perkins-3wylDrjxH-E-unsplash (1).jpg");
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+  }
+
+  .houseContainer {
+    padding-left: 50px;
+    padding-right: 50px;
+  }
+}
+
+.buttonContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}

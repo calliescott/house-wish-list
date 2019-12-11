@@ -1,0 +1,31 @@
+.addHouseContainer {
+  padding-top: 100px;
+}
+
+.border {
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  width: 500px;
+  padding: 50px;
+  margin: 0 auto;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+  background-color: white;
+}
+
+.formLabel {
+  color: black;
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+
+.formInput {
+  border: 1px solid lightgray;
+  border-radius: 4px;
+  font-size: 14px;
+  width: 100%;
+  margin-bottom: 10px;
+  height: 30px;
+}

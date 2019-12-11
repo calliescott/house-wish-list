@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
-import Header from "../Header/Header";
-import HomePage from "../HomePage/HomePage";
-import AddHouseForm from "../AddHouseForm/AddHouseForm";
-import HousePage from "../HousePage/HousePage";
-import Footer from "../Footer/Footer";
+import Header from "../Header/Header.jsx";
+import HomePage from "../HomePage/HomePage.jsx";
+import AddHouseForm from "../AddHouseForm/AddHouseForm.jsx";
+import HousePage from "../HousePage/HousePage.jsx";
+import Footer from "../Footer/Footer.jsx";
+import Login from "../Login/Login.jsx";
 
 class App extends Component {
   constructor() {
@@ -34,6 +35,7 @@ class App extends Component {
           <Header />
           <Switch>
             <Route exact path="/" component={HomePage} />
+            <Route path="/login" component={Login} />
             <Route exact path="/addHouse" component={AddHouseForm} />
             <Route path="/house/:id" component={HousePage} />
             <Route path="*" component={() => {

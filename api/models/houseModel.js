@@ -5,9 +5,14 @@ const houseSchema = exports.schema = new Schema({
   listingPrice: Number,
   address: String,
   city: String,
-  postalCode: String,
   agentValue: Number,
-  rating: Number
+  rating: Number,
+  positiveNotes: String,
+  negativeNotes: String,
+  user: {
+    type: Schema.Types.ObjectId,
+    ref: 'User',
+  }
 });
 
 const House = exports.model = mongoose.model('House', houseSchema);
