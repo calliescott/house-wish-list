@@ -9,6 +9,8 @@ exports.findUserById = async (id) => {
       throw new Error("bad data");
     }
   } catch (err) {
+    // If we're just throwing the error inside the catch, we can just not use a try/catch
+    // It will achieve the same thing, but be easier to read and reason about
     throw err;
   }
 };

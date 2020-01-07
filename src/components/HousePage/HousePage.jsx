@@ -8,8 +8,8 @@ export default function HousePage(props) {
   const [ house, updateHouse ] = useState({});
   const hasRetrievedHouse = useRef(false);
 
-  useEffect(() => {
-    async function getHouseListingById() {
+  // We can clean this up a little by removing the inner function
+  useEffect(async () => {
       try { 
         const response = await fetch(`/api/houses/${props.match.params.id}`);
         const resp = await response.json();
@@ -18,10 +18,6 @@ export default function HousePage(props) {
       } catch(err) {
         console.log(err);
       }
-    };
-
-    getHouseListingById();
-
   }, [ props.match.params.id]);
 
   async function deleteHouse() {
